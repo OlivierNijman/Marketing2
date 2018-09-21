@@ -1,0 +1,16 @@
+setwd("D:/Github/MarketingAssign1")
+rm(list = ls())
+
+library(ggplot2)
+library(readxl)
+library(dplyr)
+# library(ggseas)
+ library(tidyr)
+# library(xts)
+# library(quantmod)
+# library(Quandl)
+# library(astsa)
+# library(PerformanceAnalytics)
+# library(TTR)
+# library(corrplot)
+

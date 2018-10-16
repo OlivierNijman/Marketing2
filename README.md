@@ -1,2 +1,2 @@
-# MarketingAssign1
-marketing assignment 1 
+# MarketingAssign2
+marketing assignment 2 

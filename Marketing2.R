@@ -13,9 +13,6 @@ robots <- mlogit.data(robots, choice="Selection_Dummy", shape="long", alt.var ="
 ml1<- mlogit(Selection_Dummy ~ Design.1.Machine + Design.2.Facial.expressions+ Social.Interaction.1.Passive + 
                                Level.of.Autonomy.1.Passive + Level.of.Autonomy.2.Assertive + Price.199 + Price.249 + Price.249.Discount + 
                                Price.299 +  
-                               Price.discount + User.Rating.3.8.stars + User.Rating.4.1.stars + User.Rating.4.5.stars + 
+                                User.Rating.3.8.stars + User.Rating.4.1.stars + User.Rating.4.5.stars + 
                                None_option | 0, robots) # note: the "| 0" part means that no alternative-specific constants should be considered
-summary(lc1)
-
-#ffyftyfyfyfg
-#blabla
+summary(ml1)

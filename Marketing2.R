@@ -14,3 +14,6 @@ ml1<- mlogit(Selection_Dummy ~ Design.1.Machine + Design.2.Facial.expressions+ S
                Price.discount + User.Rating.3.8.stars + User.Rating.4.1.stars + User.Rating.4.5.stars +User.Rating.val+ 
                None_option | 0, robots) # note: the "| 0" part means that no alternative-specific constants should be considered
 summary(ml1)
+
+
+#blabla

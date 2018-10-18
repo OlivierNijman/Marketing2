@@ -26,7 +26,7 @@ ll_0 <- n*c*log(1/m)
 ll_beta <- as.numeric(ml1$logLik)
 df <- 13
 
-lltest <- -2*(LL_0 -ml1$logLik)
+lltest <- -2*(ll_0 -ml1$logLik)
 
 p_value <- 1-pchisq(lltest, df = 13)
 
@@ -48,3 +48,4 @@ est <- data.frame(c(Design.3.Facial.and.Body, Social.2.Acive, level.3.autonomous
 colnames(est) <- "estimates"
 rownames(est) <- c("Design.3.Facial.and.Body", "Social.2.Acive", "level.3.autonomous", "price.349", "user.rating.4.8.stars")
 all_estimates <- rbind(data.frame(estimates), est)
+

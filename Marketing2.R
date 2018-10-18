@@ -30,6 +30,7 @@ lltest <- -2*(LL_0 -ml1$logLik)
 
 p_value <- 1-pchisq(lltest, df = 13)
 
-# adjusted R squared
+# adjusted R squared, normal_r is considered acceptable (0.219) < 0.4
 normal_r <- 1- ll_beta/ll_0
 adjusted_r <- (ll_beta - df)/ll_0
+

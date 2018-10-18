@@ -64,3 +64,6 @@ ml3<- mlogit(Selection_Dummy ~ Design.1.Machine + Design.2.Facial.expressions+ S
                None_option | 0, robots) # note: the "| 0" part means that no alternative-specific constants should be considered
 summary(ml3)
 
+
+lrtest2 <- -2*(ml3$logLik - ml1$logLik)
+1-pchisq(lrtest2, df = 11)

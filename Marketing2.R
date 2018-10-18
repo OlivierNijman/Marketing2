@@ -78,3 +78,6 @@ summary(ml4)
 
 lrtest3 <- -2*(ml4$logLik - ml3$logLik)
 1-pchisq(lrtest3, df = 9)
+
+# Calculate incremental WTP
+c(coef(ml3)[8:10],User.rating.4.8.stars= -sum(coef(ml3)[8:10]))/abs(coef(ml3)["Price.val"])

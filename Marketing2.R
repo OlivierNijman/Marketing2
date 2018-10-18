@@ -69,8 +69,8 @@ lrtest2 <- -2*(ml3$logLik - ml1$logLik)
 1-pchisq(lrtest2, df = 11)
 
 #price linear and userrating linear
-ml3<- mlogit(Selection_Dummy ~ Design.1.Machine + Design.2.Facial.expressions+ Social.Interaction.1.Passive + 
+ml4<- mlogit(Selection_Dummy ~ Design.1.Machine + Design.2.Facial.expressions+ Social.Interaction.1.Passive + 
                Level.of.Autonomy.1.Passive + Level.of.Autonomy.2.Assertive + Price.val + Price.discount+ 
                User.Rating.val + 
                None_option | 0, robots) # note: the "| 0" part means that no alternative-specific constants should be considered
-summary(ml3)
+summary(ml4)

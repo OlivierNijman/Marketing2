@@ -42,3 +42,9 @@ Social.2.Acive <- -sum(estimates[3])
 level.3.autonomous <- -sum(estimates[4:5])
 price.349 <- -sum(estimates[6:9])
 user.rating.4.8.stars <- -sum(estimates[10:12])
+
+#make table
+est <- data.frame(c(Design.3.Facial.and.Body, Social.2.Acive, level.3.autonomous, price.349, user.rating.4.8.stars))
+colnames(est) <- "estimates"
+rownames(est) <- c("Design.3.Facial.and.Body", "Social.2.Acive", "level.3.autonomous", "price.349", "user.rating.4.8.stars")
+all_estimates <- rbind(data.frame(estimates), est)

@@ -49,3 +49,11 @@ colnames(est) <- "estimates"
 rownames(est) <- c("Design.3.Facial.and.Body", "Social.2.Acive", "level.3.autonomous", "price.349", "user.rating.4.8.stars")
 all_estimates <- rbind(data.frame(estimates), est)
 
+#interaction effect
+ml2<- mlogit(Selection_Dummy ~ Design.1.Machine + Design.2.Facial.expressions+ Social.Interaction.1.Passive + 
+               Level.of.Autonomy.1.Passive + Level.of.Autonomy.2.Assertive + Price.199 + Price.249 + Price.249.Discount + 
+               Price.299 +  
+               User.Rating.3.8.stars + User.Rating.4.1.stars + User.Rating.4.5.stars + I(None_option*Household.size) +
+               None_option | 0, robots) # note: the "| 0" part means that no alternative-specific constants should be considered
+summary(ml2)
+

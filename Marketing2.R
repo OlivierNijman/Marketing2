@@ -4,6 +4,9 @@ library(mlogit)
 library(gmnl)
 
 robots <- read.csv("Robots_CBC_2.csv")	
+n <- 112
+c <- 10
+m <- 4
 # convert data to work with the mlogit format. makes dummy TRUE or FALSE
 robots <- mlogit.data(robots, choice="Selection_Dummy", shape="long", alt.var ="Alternative_id")
 
@@ -19,8 +22,8 @@ ml1<- mlogit(Selection_Dummy ~ Design.1.Machine + Design.2.Facial.expressions+ S
 summary(ml1)
 
 #log-likelihood NULL model, chisq test
-LL_0 <- 112*10*log(1/4)
+LL_0 <- n*c*log(1/m)
 
-lltest <- -2*(LL_0 - ml1$logLik)
+lltest <- -2*(LL_0 -ml1$logLik)
 
 p_value <- 1-pchisq(lltest, df = 13)

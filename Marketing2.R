@@ -22,8 +22,14 @@ ml1<- mlogit(Selection_Dummy ~ Design.1.Machine + Design.2.Facial.expressions+ S
 summary(ml1)
 
 #log-likelihood NULL model, chisq test
-LL_0 <- n*c*log(1/m)
+ll_0 <- n*c*log(1/m)
+ll_beta <- as.numeric(ml1$logLik)
+df <- 13
 
 lltest <- -2*(LL_0 -ml1$logLik)
 
 p_value <- 1-pchisq(lltest, df = 13)
+
+# adjusted R squared
+normal_r <- 1- ll_beta/ll_0
+adjusted_r <- (ll_beta - df)/ll_0

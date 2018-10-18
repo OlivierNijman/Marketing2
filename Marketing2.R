@@ -34,3 +34,11 @@ p_value <- 1-pchisq(lltest, df = 13)
 normal_r <- 1- ll_beta/ll_0
 adjusted_r <- (ll_beta - df)/ll_0
 
+#find reference levels
+estimates <-  ml1$coefficients
+
+Design.3.Facial.and.Body <- -sum(estimates[1:2])
+Social.2.Acive <- -sum(estimates[3])
+level.3.autonomous <- -sum(estimates[4:5])
+price.349 <- -sum(estimates[6:9])
+user.rating.4.8.stars <- -sum(estimates[10:12])

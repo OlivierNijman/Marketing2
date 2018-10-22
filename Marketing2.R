@@ -83,13 +83,25 @@ lrtest3 <- -2*(ml4$logLik - ml3$logLik)
 c(coef(ml3)[8:10],User.rating.4.8.stars= -sum(coef(ml3)[8:10]))/abs(coef(ml3)["Price.val"])
 
 
+#lc model 2 segments
 lc <- gmnl(Selection_Dummy ~ Design.1.Machine + Design.2.Facial.expressions+ Social.Interaction.1.Passive + 
-  Level.of.Autonomy.1.Passive + Level.of.Autonomy.2.Assertive + Price.val + Price.discount+ 
-  User.Rating.val + 
+             Level.of.Autonomy.1.Passive + Level.of.Autonomy.2.Assertive + Price.199 + Price.249 + Price.249.Discount + 
+             Price.299 +  
+             User.Rating.3.8.stars + User.Rating.4.1.stars + User.Rating.4.5.stars + 
   None_option | 0 | 0 | 0| 1, 
   data = robots,
   model = "lc",
   Q=2,
   method = "NR")
 
+summary(lc)
 
+
+
+#error 
+memb_prob <- lc$Qir
+
+mean(1 - apply(memb_prob,1,max))
+
+#probability belonging to class 2
+exp(lc$coefficients["(class)2"])/(1+exp(lc$coefficients["(class)2"]))

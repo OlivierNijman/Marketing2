@@ -88,11 +88,11 @@ lc <- gmnl(Selection_Dummy ~ Design.1.Machine + Design.2.Facial.expressions+ Soc
              Level.of.Autonomy.1.Passive + Level.of.Autonomy.2.Assertive + Price.199 + Price.249 + Price.249.Discount + 
              Price.299 +  
              User.Rating.3.8.stars + User.Rating.4.1.stars + User.Rating.4.5.stars + 
-  None_option | 0 | 0 | 0| 1, 
-  data = robots,
-  model = "lc",
-  Q=2,
-  method = "NR")
+             None_option | 0 | 0 | 0| 1, 
+           data = robots,
+           model = "lc",
+           Q=2,
+           method = "NR")
 
 summary(lc)
 
@@ -120,4 +120,39 @@ lc_est <- rbind(lc_est, class.1.Design.3.Facial.and.Body, Class.1.Social.2.Acive
 rownames(lc_est)[13:17] <- c("design3facialandbody", "social2active", "autonomy3autonomous", "price349", "user4.8")
 colnames(lc_est) <- "estimate"
 
+#utilities
+Uprice199<-sum(lc_est[1,], lc_est[3,],lc_est[4,],lc_est[6,],lc_est[17,])
+Uprice249 <- sum(lc_est[1,], lc_est[3,],lc_est[4,],lc_est[7,],lc_est[17,])
+Uprice249D <- sum(lc_est[1,], lc_est[3,],lc_est[4,],lc_est[8,],lc_est[17,])
+Uprice299<-sum(lc_est[1,], lc_est[3,],lc_est[4,],lc_est[9,],lc_est[17,])
+Uprice349<-sum(lc_est[1,], lc_est[3,],lc_est[4,],lc_est[16,],lc_est[17,])
 
+#probabilities
+P199 <- exp(Uprice199)/(exp(Uprice199)+exp(Uprice249)+exp(Uprice249D)+exp(Uprice299)+exp(Uprice349))
+P249 <- exp(Uprice249)/(exp(Uprice199)+exp(Uprice249)+exp(Uprice249D)+exp(Uprice299)+exp(Uprice349))
+P249D <- exp(Uprice249D)/(exp(Uprice199)+exp(Uprice249)+exp(Uprice249D)+exp(Uprice299)+exp(Uprice349))
+P299 <- exp(Uprice299)/(exp(Uprice199)+exp(Uprice249)+exp(Uprice249D)+exp(Uprice299)+exp(Uprice349))
+P349 <- exp(Uprice349)/(exp(Uprice199)+exp(Uprice249)+exp(Uprice249D)+exp(Uprice299)+exp(Uprice349))
+
+#revenue = prob*price
+rev199 <- P199*199
+rev249 <- P249*249
+rev249D <- P249D*249
+rev299 <- P299*299
+rev349<- P349*349
+
+#Utility competition
+Ucomp <- sum(lc_est[13,], lc_est[14,], lc_est[15,],lc_est[8,],lc_est[11,])
+
+#Probabilities with competition
+CP199 <- exp(Uprice199)/(exp(Uprice199)+exp(Uprice249)+exp(Uprice249D)+exp(Uprice299)+exp(Uprice349)+exp(Ucomp))
+CP249 <- exp(Uprice249)/(exp(Uprice199)+exp(Uprice249)+exp(Uprice249D)+exp(Uprice299)+exp(Uprice349)+exp(Ucomp))
+CP249D <- exp(Uprice249D)/(exp(Uprice199)+exp(Uprice249)+exp(Uprice249D)+exp(Uprice299)+exp(Uprice349)+exp(Ucomp))
+CP299 <- exp(Uprice299)/(exp(Uprice199)+exp(Uprice249)+exp(Uprice249D)+exp(Uprice299)+exp(Uprice349)+exp(Ucomp))
+CP349 <- exp(Uprice349)/(exp(Uprice199)+exp(Uprice249)+exp(Uprice249D)+exp(Uprice299)+exp(Uprice349)+exp(Ucomp))
+#revenue = prob*price with competition
+crev199 <- CP199*199
+crev249 <- CP249*249
+crev249D <-CP249D*249
+crev299 <- CP299*299
+crev349<- CP349*349

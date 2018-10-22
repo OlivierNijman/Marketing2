@@ -104,4 +104,15 @@ memb_prob <- lc$Qir
 mean(1 - apply(memb_prob,1,max))
 
 #probability belonging to class 2
-exp(lc$coefficients["(class)2"])/(1+exp(lc$coefficients["(class)2"]))
+prob2 <- exp(lc$coefficients["(class)2"])/(1+exp(lc$coefficients["(class)2"]))
+
+112 * prob2
+
+lc_est <- data.frame(lc$coefficients[1:12])
+class.1.Design.3.Facial.and.Body <- -sum(lc_est[1:2,])
+Class.1.Social.2.Acive <- -sum(lc_est[3,])
+Class.1.level.3.autonomous <- -sum(lc_est[4:5,])
+Class.1.price.349 <- -sum(lc_est[6:9,])
+Class.1.user.rating.4.8.stars <- -sum(lc_est[10:12,])
+lc_est <- rbind(lc_est, class.1.Design.3.Facial.and.Body, Class.1.Social.2.Acive, Class.1.level.3.autonomous, Class.1.price.349, Class.1.user.rating.4.8.stars)
+rownames(lc_est)[13:17] <- c("design3facialandbody", "social2active", "autonomy3autonomous", "price349", "user4.8")
